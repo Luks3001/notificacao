@@ -1,4 +1,4 @@
-FROM gradle:7.5-jdk17 AS BUILD
+FROM gradle:8.7-jdk17 AS BUILD
 WORKDIR /app
 COPY . .
 RUN gradle build --no-daemon
@@ -10,6 +10,6 @@ WORKDIR /app
 
 COPY --from=build /app/build/libs/*.jar /app/notificacao.jar
 
-EXPOSE 8083
+EXPOSE 8084
 
 CMD ["java", "-jar", "/app/notificacao.jar"]
